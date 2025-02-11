@@ -1,0 +1,86 @@
+h1 {
+    width: 118px;
+    top: 166px;
+    left: 120px;
+    font-family: Cera Pro;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    color: #3D3D3D;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    width: 137px;
+    top: 488px;
+    left: 120px;
+    font-family: Cera Pro;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 15px;
+    letter-spacing: 0%;
+    color: #3D3D3D;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+input,
+select,
+textarea {
+    width: 350px;
+    height: 40px;
+    top: 608px;
+    left: 120px;
+    border-radius: 3px;
+    border-width: 1px;
+    font-family: Cera Pro;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+    letter-spacing: 0%;
+    color: #A5A5A5;
+    border: 1px solid #EAEAEA;
+    margin-bottom: 15px;
+}
+
+input[type="checkbox"] {
+    width: auto;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+button.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button.submit-btn:hover {
+    background-color: #45a049;
+}
+
+#formOutput {
+    margin-top: 20px;
+}
+
+#formOutput ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#formOutput li {
+    margin-bottom: 8px;
+}
