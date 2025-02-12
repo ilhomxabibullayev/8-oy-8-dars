@@ -55,7 +55,7 @@ const Categories = () => {
         fetchProducts();
     }, [currentPage]);
 
-    const filteredProducts: Product [] = products.filter(product =>
+    const filteredProducts = products.filter(product =>
         product.price >= minPrice && product.price <= maxPrice
     );
 
