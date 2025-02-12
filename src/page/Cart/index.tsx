@@ -86,7 +86,7 @@ const Cart = () => {
             <div>
               <NavLink to='/checkout'><button className='cart__btn4'>Proceed To Checkout</button></NavLink>
             </div>
-            <a className='cart__link4' href="">Continue Shopping</a>
+            <a className='cart__link4' href="/shop">Continue Shopping</a>
           </div>
         </div>
         <Like />

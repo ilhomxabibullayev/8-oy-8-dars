@@ -33,6 +33,10 @@ const Categories = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const productsPerPage = 9;
 
+    const [priceRange, setPriceRange] = useState<{ min: number; max: number }>({ min: 39, max: 1230 });
+    const [minPrice, setMinPrice] = useState<number>(39);
+    const [maxPrice, setMaxPrice] = useState<number>(1230);
+
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -50,6 +54,10 @@ const Categories = () => {
 
         fetchProducts();
     }, [currentPage]);
+
+    const filteredProducts: Product [] = products.filter(product =>
+        product.price >= minPrice && product.price <= maxPrice
+    );
 
     const totalPages = Math.ceil(count / productsPerPage);
 
@@ -132,7 +140,26 @@ const Categories = () => {
                             </li>
                             <h3 className='categories__title2'>Price Range</h3>
                             <li className='categories__item'>
-                                <p className='categories__price'>Price: <span className='categories__span'>$39 - $1230</span></p>
+                                <p className='categories__price'>
+                                    Price: <span className='categories__span'>${minPrice} - ${maxPrice}</span>
+                                </p>
+                            </li>
+                            <li className='categories__item'>
+                                {}
+                                <div className="price-range">
+                                    <input
+                                        type="range"
+                                        min="39"
+                                        max="1230"
+                                        value={minPrice}
+                                        onChange={(e) => {
+                                            setMinPrice(Number(e.target.value));
+                                            setPriceRange(prev => ({ ...prev, min: Number(e.target.value) }));
+                                        }}
+                                        className="price-range__slider"
+                                    />
+                                    <span>${minPrice}</span>
+                                </div>
                             </li>
                             <li className='categories__item'>
                                 <button className='categories__btn'>Filter</button>

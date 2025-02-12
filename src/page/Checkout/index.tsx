@@ -1,64 +1,102 @@
+import { NavLink } from 'react-router';
 import GreenShop from '../../components/GreenShop';
 import Like from '../../components/Like';
 import './Checkout.css'
+import Button from '../../assets/icon/button.svg'
 
 const Checkout = () => {
     return (
-        <div className='container checkout__container'>
-            <h1>Billing Address</h1>
-            <form id="billingForm" action="#" method="POST">
-                <label htmlFor="firstName">First Name*</label>
-                <input type="text" id="firstName" name="firstName" required />
+        <>
+            <div className='checkout'>
+                <div className='container checkout__container'>
+                    <div className='checkout__content'>
+                        <NavLink className='checkout__link' to='/'>Home</NavLink>
+                        <p>/</p>
+                        <NavLink className='checkout__link' to='/shop'>Shop</NavLink>
+                        <p>/</p>
+                        <NavLink className='checkout__link' to='/checkout'>Checkout</NavLink>
+                    </div>
+                    <div className='checkout__content2'>
+                        <form className="checkout__form">
+                            <h2 className="checkout__title">Billing Address</h2>
 
-                <label htmlFor="lastName">Last Name*</label>
-                <input type="text" id="lastName" name="lastName" required />
+                            <div className='checkout__groups'>
+                                <div className="checkout__group">
+                                    <label className='checkout__label' htmlFor="first-name">First Name</label>
+                                    <input className='checkout__input' type="text" id="first-name" name="first-name" required />
+                                </div>
 
-                <label htmlFor="country">Country / Region*</label>
-                <select id="country" name="country" required>
-                    <option value="">Select a country/region</option>
-                    <option value="US">United States</option>
-                    <option value="SA">Saudi Arabia</option>
-                </select>
+                                <div className="checkout__group">
+                                    <label className='checkout__label' htmlFor="last-name">Last Name</label>
+                                    <input className='checkout__input' type="text" id="last-name" name="last-name" />
+                                </div>
+                            </div>
 
-                <label htmlFor="city">Town / City*</label>
-                <input type="text" id="city" name="city" required />
+                            <div className='checkout__groups'>
+                                <div className="checkout__group">
+                                    <label className='checkout__label' htmlFor="country">Country / Region</label>
+                                    <input className='checkout__input' type="text" id="country" name="country" required placeholder="Select a country / region" />
+                                </div>
 
-                <label htmlFor="street">Street Address*</label>
-                <input type="text" id="street" name="street" required />
+                                <div className="checkout__group">
+                                    <label className='checkout__label' htmlFor="town-city">Town / City</label>
+                                    <input className='checkout__input' type="text" id="town-city" name="town-city" />
+                                </div>
+                            </div>
 
-                <label htmlFor="apartment">Apartment, Suite, Unit, etc. (Optional)</label>
-                <input type="text" id="apartment" name="apartment" />
+                            <div className='checkout__groups'>
+                                <div className="checkout__group">
+                                    <label className='checkout__label' htmlFor="street-address">Street Address</label>
+                                    <input className='checkout__input' type="text" id="street-address" name="street-address" required placeholder="YHouse number and street name" />
+                                </div>
 
-                <label htmlFor="state">State*</label>
-                <select id="state" name="state" required>
-                    <option value="">Select a state</option>
-                    <option value="CA">California</option>
-                    <option value="NY">New York</option>
-                </select>
+                                <div className="checkout__group">
+                                    <input className='checkout__input' type="text" id="apartment" name="apartment" placeholder="Apartment, suite, unit, etc. (optional)" />
+                                </div>
+                            </div>
 
-                <label htmlFor="zip">Zip Code*</label>
-                <input type="text" id="zip" name="zip" required />
+                            <div className='checkout__groups'>
+                                <div className="checkout__group">
+                                    <label className='checkout__label' htmlFor="state">State</label>
+                                    <input className='checkout__input' type="text" id="state" name="state" required placeholder="Select a state" />
+                                </div>
 
-                <label htmlFor="email">Email Address*</label>
-                <input type="email" id="email" name="email" required />
+                                <div className="checkout__group">
+                                    <label className='checkout__label' htmlFor="zip">Zip</label>
+                                    <input className='checkout__input' type="text" id="zip" name="zip" required placeholder="Your zip code" />
+                                </div>
+                            </div>
 
-                <label htmlFor="phone">Phone Number*</label>
-                <input type="tel" id="phone" name="phone" pattern="^\+998\d{9}$" required />
+                            <div className='checkout__groups'>
+                                <div className="checkout__group">
+                                    <label className='checkout__label' htmlFor="email">Email Address</label>
+                                    <input className='checkout__input' type="email" id="email" name="email" required placeholder="Your email address" />
+                                </div>
 
-                <label htmlFor="differentAddress">Ship to a different address?</label>
-                <input type="checkbox" id="differentAddress" name="differentAddress" />
+                                <div className="checkout__group">
+                                    <label className='checkout__label' htmlFor="phone">Phone Number</label>
+                                    <input className='checkout__input' type="tel" id="phone" name="phone" required placeholder="Your phone number" />
+                                </div>
+                            </div>
 
-                <label htmlFor="orderNotes">Order Notes (Optional)</label>
-                <textarea id="orderNotes" name="orderNotes"></textarea>
+                            <div className="checkout__group2">
+                                <button className='checkout__btn' type="submit">
+                                    <img src={Button} alt="Submit Button" />
+                                </button>
+                                <label htmlFor="ship-different-address">Ship to a different address?</label>
+                            </div>
 
-                <button type="submit">Submit</button>
-            </form>
-
-            <div id="formOutput"></div>
-
-            <Like />
-            <GreenShop />
-        </div>
+                            <div className="checkout__group">
+                                <label className='checkout__label' htmlFor="order-notes">Order Notes (optional)</label>
+                                <input className='checkout__input2' type="text" id="order-notes" name="order-notes" />
+                            </div>
+                        </form>
+                    </div>
+                    <Like />
+                    <GreenShop />
+                </div>
+            </div>
+        </>
     );
 };
 
