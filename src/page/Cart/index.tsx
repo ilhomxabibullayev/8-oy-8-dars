@@ -20,7 +20,7 @@ const Cart = () => {
           <p>/</p>
           <NavLink className='cart__link' to='/shop'>Shop</NavLink>
           <p>/</p>
-          <NavLink className='cart__link' to='/cart'>Shoping Cart</NavLink>
+          <NavLink className='cart__link' to='/cart'>Shopping Cart</NavLink>
         </div>
         <div className='cart__container2'>
           <div className='cart__container3'>
@@ -84,7 +84,10 @@ const Cart = () => {
               <p className='cart__price2'>${calculateTotal()}</p>
             </div>
             <div>
-              <NavLink to='/checkout'><button className='cart__btn4'>Proceed To Checkout</button></NavLink>
+              {}
+              <NavLink to={{ pathname: '/checkout', state: { cartItems } }}>
+                <button className='cart__btn4'>Proceed To Checkout</button>
+              </NavLink>
             </div>
             <a className='cart__link4' href="/shop">Continue Shopping</a>
           </div>
