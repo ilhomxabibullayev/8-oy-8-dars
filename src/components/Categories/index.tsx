@@ -202,7 +202,7 @@ const Categories = () => {
                                 <li key={product._id} className="categories__card2">
                                     <NavLink
                                         className="categories__link"
-                                        to={`/shop/${product._id}`}
+                                        to={`/productDetails/${product._id}`}
                                     >
                                         <img className="categories__image2" src={product.pictures} alt={product.name} />
                                     </NavLink>
