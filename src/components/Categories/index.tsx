@@ -31,7 +31,7 @@ const Categories = () => {
     const [error, setError] = useState<string | null>(null);
     const { addToCart } = useCart();
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const productsPerPage = 9;
+    const productsPerPage = 10;
 
     const [priceRange, setPriceRange] = useState<{ min: number; max: number }>({ min: 39, max: 1230 });
     const [minPrice, setMinPrice] = useState<number>(39);
@@ -53,7 +53,7 @@ const Categories = () => {
         };
 
         fetchProducts();
-    }, [currentPage]);
+    }, [currentPage, priceRange]);
 
     const filteredProducts = products.filter(product =>
         product.price >= minPrice && product.price <= maxPrice
@@ -185,7 +185,7 @@ const Categories = () => {
                         </div>
                     </div>
                     <div className='categories__content'>
-                        
+
                         <ul className='categories__list2'>
                             <li className='categories__itme2'>
                                 <NavLink className='categories__link' to=''>All Plants</NavLink>
