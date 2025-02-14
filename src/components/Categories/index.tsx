@@ -163,19 +163,6 @@ const Categories = () => {
                                 </div>
                             </li>
                             <li className="categories__item">
-                                <div className="price-range">
-                                    <input
-                                        type="range"
-                                        min="39"
-                                        max="1230"
-                                        value={maxPrice}
-                                        onChange={(e) => setMaxPrice(Number(e.target.value))}
-                                        className="price-range__slider"
-                                    />
-                                    <span>${maxPrice}</span>
-                                </div>
-                            </li>
-                            <li className="categories__item">
                                 <button className="categories__btn" onClick={handleFilterChange}>
                                     Filter
                                 </button>
