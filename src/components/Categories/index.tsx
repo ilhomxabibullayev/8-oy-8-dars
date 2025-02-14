@@ -87,6 +87,11 @@ const Categories = () => {
         return pageNumbers;
     };
 
+    const handleFilterChange = () => {
+        setMinPrice(priceRange.min);
+        setMaxPrice(priceRange.max);
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -144,25 +149,36 @@ const Categories = () => {
                                     Price: <span className='categories__span'>${minPrice} - ${maxPrice}</span>
                                 </p>
                             </li>
-                            <li className='categories__item'>
-                                {}
+                            <li className="categories__item">
                                 <div className="price-range">
                                     <input
                                         type="range"
                                         min="39"
                                         max="1230"
                                         value={minPrice}
-                                        onChange={(e) => {
-                                            setMinPrice(Number(e.target.value));
-                                            setPriceRange(prev => ({ ...prev, min: Number(e.target.value) }));
-                                        }}
+                                        onChange={(e) => setMinPrice(Number(e.target.value))}
                                         className="price-range__slider"
                                     />
                                     <span>${minPrice}</span>
                                 </div>
                             </li>
-                            <li className='categories__item'>
-                                <button className='categories__btn'>Filter</button>
+                            <li className="categories__item">
+                                <div className="price-range">
+                                    <input
+                                        type="range"
+                                        min="39"
+                                        max="1230"
+                                        value={maxPrice}
+                                        onChange={(e) => setMaxPrice(Number(e.target.value))}
+                                        className="price-range__slider"
+                                    />
+                                    <span>${maxPrice}</span>
+                                </div>
+                            </li>
+                            <li className="categories__item">
+                                <button className="categories__btn" onClick={handleFilterChange}>
+                                    Filter
+                                </button>
                             </li>
                             <h3 className="categories__title2">Size</h3>
                             <li className="categories__item">
@@ -198,29 +214,37 @@ const Categories = () => {
                             </div>
                         </ul>
                         <ul className="categories__products">
-                            {products.length > 0 && products.map((product) => (
-                                <li key={product._id} className="categories__card2">
-                                    <NavLink
-                                        className="categories__link"
-                                        to={`/productDetails/${product._id}`}
-                                    >
-                                        <img className="categories__image2" src={product.pictures} alt={product.name} />
-                                    </NavLink>
-                                    <div className='categories__icon'>
-                                        <button className='categories__btn-icon'>
-                                            <img src={Cart} alt="Cart" onClick={() => handleAddToCart(product)} />
-                                        </button>
-                                        <button className='categories__btn-icon'>
-                                            <img src={Search} alt="Search" />
-                                        </button>
-                                        <button className='categories__btn-icon'>
-                                            <img src={Like} alt="" />
-                                        </button>
-                                    </div>
-                                    <h4 className="categories__sub-title">{product.name}</h4>
-                                    <p className="categories__price">${product.price}</p>
-                                </li>
-                            ))}
+                            {filteredProducts.length > 0 &&
+                                filteredProducts.map((product) => (
+                                    <li key={product.id} className="categories__card2">
+                                        <NavLink
+                                            className="categories__link"
+                                            to={`/productDetails/${product.id}`}
+                                        >
+                                            <img
+                                                className="categories__image2"
+                                                src={product.pictures}
+                                                alt={product.name}
+                                            />
+                                        </NavLink>
+                                        <div className="categories__icon">
+                                            <button
+                                                className="categories__btn-icon"
+                                                onClick={() => handleAddToCart(product)}
+                                            >
+                                                <img src={Cart} alt="Cart" />
+                                            </button>
+                                            <button className="categories__btn-icon">
+                                                <img src={Search} alt="Search" />
+                                            </button>
+                                            <button className="categories__btn-icon">
+                                                <img src={Like} alt="Like" />
+                                            </button>
+                                        </div>
+                                        <h4 className="categories__sub-title">{product.name}</h4>
+                                        <p className="categories__price">${product.price}</p>
+                                    </li>
+                                ))}
                         </ul>
                         <div className="categories__button">
                             <button
