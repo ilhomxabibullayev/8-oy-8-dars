@@ -30,19 +30,23 @@ const Checkout = () => {
         return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     };
 
-    const handleChange = (e) => {
+    const handleChange = (e:any) => {
+        console.log(e);
+        
         const { name, value } = e.target;
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
         }));
+        console.log(formData);
+        
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:any) => {
         e.preventDefault();
         setLoading(true);
         setError('');
-
+        handleChange(e)
         const orderData = {
             ...formData,
             items: cartItems,
@@ -50,7 +54,7 @@ const Checkout = () => {
         };
 
         try {
-            const response = await fetch('/api/orders', {
+            const response = await fetch('https://www.e-commerce-api-v3.nt.azimumarov.uz/api/v1/orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,8 +86,8 @@ const Checkout = () => {
                     <NavLink className='checkout__link' to='/checkout'>Checkout</NavLink>
                 </div>
 
-                <div className='checkout__content2'>
-                    <form className="checkout__form" onSubmit={handleSubmit}>
+                <form className='checkout__content2' onSubmit={handleSubmit}>
+                    <div className="checkout__form" >
                         <h2 className="checkout__title">Billing Address</h2>
                         <div className='checkout__groups'>
                             <div className="checkout__group">
@@ -144,9 +148,9 @@ const Checkout = () => {
                         </div>
                         <div className="checkout__group">
                             <label className='checkout__label' htmlFor="order-notes">Order Notes (optional)</label>
-                            <input className='checkout__input2' type="text" id="order-notes" name="orderNotes" value={formData.orderNotes} onChange={handleChange} />
+                            <input className='checkout__input2' type='' id="order-notes" name="orderNotes" value={formData.orderNotes} onChange={handleChange} />
                         </div>
-                    </form>
+                    </div>
 
                     <div className='checkout__order'>
                         <h2 className="checkout__title">Your Order</h2>
@@ -201,7 +205,7 @@ const Checkout = () => {
                         </div>
                         <button className='checkout__btn2' type="submit" disabled={loading}>Place Order</button>
                     </div>
-                </div>
+                </form>
 
                 <Like />
                 <GreenShop />
