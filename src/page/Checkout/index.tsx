@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router';
 import GreenShop from '../../components/GreenShop';
 import Like from '../../components/Like';
@@ -30,19 +30,18 @@ const Checkout = () => {
         return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     };
 
-    const handleChange = (e:any) => {
+    const handleChange = (e: any) => {
         console.log(e);
-        
+
         const { name, value } = e.target;
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
         }));
         console.log(formData);
-        
     };
 
-    const handleSubmit = async (e:any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
         setLoading(true);
         setError('');
