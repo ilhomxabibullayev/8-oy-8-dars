@@ -31,25 +31,27 @@ const Checkout = () => {
     };
 
     const handleChange = (e: any) => {
-        console.log(e);
-
         const { name, value } = e.target;
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
         }));
-        console.log(formData);
     };
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         setLoading(true);
         setError('');
-        handleChange(e)
+        handleChange(e);
+
+        // Construct the order data with correct product IDs
         const orderData = {
             ...formData,
-            items: cartItems,
-            totalAmount: calculateTotal() + 16,
+            items: cartItems.map(item => ({
+                productId: item._id, // Ensure you pass the correct productId here
+                quantity: item.quantity,
+            })),
+            totalAmount: calculateTotal() + 16, // Assuming shipping is $16
         };
 
         try {
